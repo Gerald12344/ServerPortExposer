@@ -7,7 +7,11 @@ let mainjson = {
 
 export async function setupTunnel(port: string, tunnelName: string) {
 
-    const data = spawn(`cloudflared`, [`tunnel`, `--url`, `http://localhost:${port}`], { env: mainjson });
+    if (!port.includes("http://")) {
+        port = `http://localhost:${port}`;
+    }
+
+    const data = spawn(`cloudflared`, [`tunnel`, `--url`, port], { env: mainjson });
 
     data.on('error', (e) => {
         console.log(e);

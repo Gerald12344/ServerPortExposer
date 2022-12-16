@@ -10,7 +10,7 @@ config()
 StartMongoDb().then(() => {
 
     let tunnelData = [
-        { port: "9000", tunnelName: "PORTAINER" },
+        { port: "http://10.113.206.237:9000/", tunnelName: "PORTAINER" },
         { port: "22", tunnelName: "PORTAINER_SSH" },
     ];
 
