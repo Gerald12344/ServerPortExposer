@@ -11,6 +11,8 @@ export async function setupTunnel(port: string, tunnelName: string) {
         port = `http://localhost:${port}`;
     }
 
+    console.log(port)
+
     const data = spawn(`cloudflared`, [`tunnel`, `--url`, port], { env: mainjson });
 
     data.on('error', (e) => {
